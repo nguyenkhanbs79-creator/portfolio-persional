@@ -1,0 +1,949 @@
+/*-------------------- standard styles for websites --------------------*/
+html {
+  scroll-behavior: smooth;
+  font-size: 1rem;
+  scroll-padding-top: 70px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f1f1f1;
+  color: #313639;
+  
+}
+
+.nav-item{
+  padding: 8px;
+}
+
+.img-size {
+  width: 100%;
+}
+
+ul.social-links {
+  list-style: none;
+  padding: 0;
+}
+
+ul.social-links li {
+  display: inline;
+}
+
+a {
+  color: transparent;
+}
+
+h4 {
+  letter-spacing: 0.1rem;
+}
+
+.vertical-align {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+/*--------------------- logo ----------------------------*/
+.logo h3{
+  position: relative;
+  font-size: 28px;
+  color: #ffffff;
+
+}
+
+.logo h3::before{
+    content: attr(data-text);
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 100%;
+    position: absolute;
+    color: rgb(150, 174, 242);
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+
+}
+
+@keyframes animate{
+  0%,10%,100%{
+    width: 0;
+  }
+  70%,90%{
+    width: 100%;
+  }
+}
+
+/*--------------------- Name -----------------------*/
+.name{
+  position: relative;
+  font-size: 28px;
+  color: #000000;
+
+}
+
+.name::before{
+    content: attr(data-text);
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 100%;
+    position: absolute;
+    color: rgb(150, 174, 242);
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+
+}
+
+@keyframes animate{
+  0%,10%,100%{
+    width: 0;
+  }
+  70%,90%{
+    width: 100%;
+  }
+}
+
+
+
+/*--------------------- nav styles -----------------------*/
+nav {
+  background-color: #e0e9f4;
+}
+
+.nav-link {
+  letter-spacing: 0.1rem;
+}
+
+.hvr-underline-from-center:before {
+  background: #449aea;
+}
+
+.hvr-underline-from-center:after {
+  background: #449aea;
+}
+
+/*-------------------- fa icons --------------------*/
+.fa {
+  margin: 5px;
+  margin-left: 0;
+  padding: 10px;
+  height: auto;
+  width: auto;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25%;
+  font-size: 1.5rem;
+  color: #ffffff;
+  background: #9589c1;
+}
+
+.fa:hover {
+  background: #87caeb;
+  transition: 1s;
+}
+
+/*--------------------------- Block ----------*/
+.block {
+  width: 70px;
+  height: 5px;
+  border: 0;
+  background-color: #428cd4;
+}
+
+.block-short {
+  width: 50px;
+}
+
+.block-left {
+  float:left;
+}
+
+.block-light {
+  background-color: #e4dfd9;
+}
+
+.block-blue {
+  background-color: #428cd4;
+}
+
+.block-purple {
+  background-color: #2c6cab;
+}
+
+/*------------------navbar icon animination source: https://mdbootstrap.com/snippets/jquery/mdbootstrap/911054 adjusted to my branded colours */
+.navbar-light .navbar-toggler {
+  border: transparent;
+  color: transparent;
+}
+
+.animated-icon2 {
+  display: block;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  margin: 0px;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.animated-icon2 span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.animated-icon2 span {
+  background: -webkit-gradient(linear, right top, left top, from(#041b2d), to(#449aea));
+  background: -o-linear-gradient(right, #041b2d, #449aea);
+  background: linear-gradient(to left, #041b2d, #449aea);
+}
+
+.animated-icon2 span:nth-child(1) {
+  top: 0px;
+}
+
+.animated-icon2 span:nth-child(2),
+.animated-icon2 span:nth-child(3) {
+  top: 10px;
+}
+
+.animated-icon2 span:nth-child(4) {
+  top: 20px;
+}
+
+.animated-icon2.open span:nth-child(1) {
+  top: 11px;
+  width: 0%;
+  left: 50%;
+}
+
+.animated-icon2.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+}
+
+.animated-icon2.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+}
+
+.animated-icon2.open span:nth-child(4) {
+  top: 11px;
+  width: 0%;
+  left: 50%;
+}
+
+/*----------------------------------Home--------*/
+.home-bg {
+  width: 100%;
+  /* height: 240px; */
+  /* width: */
+  /* right: 0; */
+}
+
+.home {
+  margin-top: 100px;
+}
+
+.btn-std-style {
+  margin-top: 15px;
+  display: block;
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 1rem;
+  text-align: center;
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+       -o-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+.primary-button {
+  background: -o-linear-gradient(345deg, #87caeb, #3172be);
+  background: linear-gradient(105deg, #87caeb, #3172be);
+  color: #ffffff;  
+}
+
+.primary-button:hover {
+  background: #87caeb;
+  color: #ffffff;
+  transition: 1s;
+}
+
+.secondary-button {
+  border: #87caeb solid 3px;
+  padding: 6px 18px;
+  color: #313639;
+}
+
+.secondary-button:hover {
+  color: #fff;
+  background: #87caeb;
+  border: none;
+  padding: 8px 20px;
+}
+
+.title-role {
+  letter-spacing: 0.15rem;
+  color: #636b73;
+}
+
+.intro-text {
+  font-size: 13px;
+  font-weight: 300;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #636b73;
+}
+
+/*-- Home animation source Nooray Yemon: https://codepen.io/yemon/pen/pWoROm adjusted to brand preference ---*/
+#flip {
+  height: 45px;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#flip > div >div {
+  color: #fff;
+  text-align: center;
+  padding: 4px 12px;
+  height: 55px;
+  margin-bottom: 45px;
+  display: inline-block;
+}
+
+#flip div:first-child {
+  -webkit-animation: show 5s linear infinite;
+          animation: show 5s linear infinite;
+}
+
+#flip div div {
+  text-align: center;
+  border-radius: 20px;
+  background: #87caeb;
+}
+#flip div:first-child div {
+  background: #87caeb;
+}
+#flip div:last-child div {
+  background: #87caeb;
+}
+
+@-webkit-keyframes show {
+  0% {
+    margin-top: -270px;
+  }
+  5% {
+    margin-top: -180px;
+  }
+  33% {
+    margin-top: -180px;
+  }
+  38% {
+    margin-top: -90px;
+  }
+  66% {
+    margin-top: -90px;
+  }
+  71% {
+    margin-top: 0px;
+  }
+  99.99% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: -270px;
+  }
+}
+
+@keyframes show {
+  0% {
+    margin-top: -270px;
+  }
+  5% {
+    margin-top: -180px;
+  }
+  33% {
+    margin-top: -180px;
+  }
+  38% {
+    margin-top: -90px;
+  }
+  66% {
+    margin-top: -90px;
+  }
+  71% {
+    margin-top: 0px;
+  }
+  99.99% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: -270px;
+  }
+}
+
+/*------------------ About  ----------*/
+#about {
+  background-color: #7b9ece;
+  color: #f1f1f1;
+}
+
+.card {
+  background-color: transparent;
+  border: 0;
+}
+
+.get-in-touch {
+  text-decoration: none;
+  color: #c1f7dc;
+  font-weight: bold;
+}
+
+.get-in-touch:hover {
+  text-decoration: underline;
+  color: #ffffff;
+  font-size: 17px;
+  transition: 0.5s;
+}
+
+.about-links {
+  color: #f1f1f1;
+}
+
+.about-links:hover {
+  color: #f1f1f1;
+  transition: 1s;
+}
+
+/*-----------------------------Skills -------------*/
+.progress-bar {
+  background: -webkit-gradient(linear, right top, left top, from(#004e9a), to(#87caeb));
+  background: -o-linear-gradient(right, #004e9a, #87caeb);
+  background: linear-gradient(to left, #004e9a, #87caeb);
+}
+.skill-title {
+  letter-spacing: 0.04rem;
+}
+
+/*---------------------------Circle Donuts, credit from and amended to suit my style: https://codepen.io/sandersu/pen/gerEbM*/
+
+@-webkit-keyframes donut-chart-fill {
+  to {
+    stroke-dasharray: 0 100;
+  }
+}
+
+@keyframes donut-chart-fill {
+  to {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.svg-item {
+  height: 100px;
+  font-size: 16px;
+  margin: 0.5rem;
+}
+
+.donut {
+  margin-left: 0.2rem;
+}
+
+.donut-ring {
+  stroke: #ebebeb;
+}
+
+.donut-segment {
+  animation: donut-chart-fill 1s reverse ease-in;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+  stroke: #87caeb;
+}
+
+.donut-text {
+  fill: #449aea;
+}
+
+.donut-label {
+  font-size: 0.28em;
+  font-weight: 700;
+  line-height: 1;
+  fill: #000;
+  -webkit-transform: translateY(0.25em);
+      -ms-transform: translateY(0.25em);
+          transform: translateY(0.25em);
+}
+
+.donut-percent {
+  font-size: 0.5em;
+  fill: #449aea;
+  line-height: 1;
+  -webkit-transform: translateY(0.5em);
+      -ms-transform: translateY(0.5em);
+          transform: translateY(0.5em);
+  text-align: center;
+}
+
+/*----------------------------- Portfolio ---------*/
+#portfolio {
+  background-color: #bad2f0;
+}
+
+.portfolio-intro {
+  letter-spacing: 0.05rem;
+  color: #3a4144;
+  font-size: 1.2rem;
+}
+
+.step {
+  color: #0e3974;
+}
+.step-title {
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.portfolio-sub {
+  font-size: 1.2rem;
+  letter-spacing: 0.05rem;
+}
+
+.portfolio-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/*-------------------------------Education -----------*/
+#education .card{
+  background-color: #0d4969;
+}
+
+/*-------------------------------Experience -----------*/
+.dots {
+  display: inline;
+}
+.experience-img {
+  width: 100%;
+}
+
+.more {
+  display: none;
+}
+
+.read {
+  margin-top: 15px;
+  background: -o-linear-gradient(345deg, #87caeb, #3172be);
+  background: linear-gradient(105deg, #87caeb, #3172be);
+  color: #ffffff;  
+  border: none;
+  outline: none;
+  padding: 8px 20px;
+  text-transform: capitalize;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 1rem;
+}
+
+.read:hover {
+  color: white;
+  transition: 1s;
+}
+
+#experience .card{
+  background-color: #0d4969;
+}
+
+/*-------- Timeline --------*/
+.timeline {
+  list-style-type: none;
+  position: relative;
+}
+
+/*verticle line*/
+.timeline:before {
+  content: "";
+  background: #0d4969;
+  display: inline-block;
+  position: absolute;
+  left: 16px;
+  width: 4px;
+  height: 100%;
+  z-index: 400;
+  border-radius: 1rem;
+}
+.timeline-item {
+  margin: 20px 0;
+}
+
+/*arrow*/
+.timeline-arrow {
+  border-top: 1rem solid transparent;
+  border-right: 1rem solid #0d4969;
+  border-bottom: 1rem solid transparent;
+  display: block;
+  position: absolute;
+  left: 2rem;
+}
+
+/*circle*/
+.timeline-item::before {
+  content: " ";
+  background: #e4dfd9;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 5px solid #0d4969;
+  left: 8px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.style-none {
+  list-style: none;
+}
+
+/*-----------------------------Contact-----------*/
+form {
+  background-color: #d3ced3;
+  border-radius: 0.8rem;
+}
+
+.form-width {
+  width: 100%;
+}
+
+.contact-header {
+  font-size: 4rem;
+}
+
+legend {
+  font-size: 1.8rem;
+  padding-top: 2rem;
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+label {
+  margin-top: 1rem;
+}
+
+.input-container {
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.form-icon {
+  font-size: 1rem; 
+  margin: 0;
+  border-radius: 5% 0 0 5%;
+}
+
+.form-control {
+  height: auto;
+  border-radius: 0 5% 5% 0;
+}
+
+.asteriks {
+  font-weight: 800;
+  color:#c4264b;
+}
+
+.contact-sub {
+  font-size: 0.9rem;
+  color: #636b73;
+}
+
+.contact-email-link {
+  color: #2c6cbb;
+  text-decoration: underline;
+}
+
+.contact-email-link:hover {
+  color:#215eb3;
+  transition: 1s;
+}
+
+.contact-sub-text {
+  color: #636b73;
+  letter-spacing: 0.05rem;
+}
+
+button[type="submit"] {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  color: #fafafa;
+  background-color: #6496c2;
+  float: left;
+  margin-left: 1rem;
+}
+
+button[type="submit"]:hover{
+  background-color:#5575a3;
+  color: #f1f1f1;
+}
+
+.submit-icon {
+  background: none;
+  padding: 5px;
+  margin: 5px;
+  font-size: inherit;
+}
+
+.form-control:focus {
+  border: 3px solid #6490c2;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+}
+
+.alert-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.alert-status {
+  font-size: 1.1rem;
+}
+
+/*-----------------------------Contact Modal-----------*/
+.modal-header {
+  background-color: #6480c2;
+  color: #ffffff;
+}
+
+.modal-footer button {
+  background-color: #6480c2;
+  color: white;
+}
+
+/*-----------------------------Footer-----------*/
+.footer {
+  background-color: #0d4969;
+  color: #f1f1f1;
+  margin-top: 30px;
+}
+
+.footer-button {
+  background: #9589c1;
+  display: inline-block;
+  color: #f1f1f1;
+}
+
+.footer-button:hover {
+  background: #c2649a;
+  color: #f1f1f1;
+  transition: 1s;
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+}
+
+.cv-icon {
+  font-size: 1rem;
+}
+
+/*------------------ Media Queries ----------*/
+@media (min-width: 320px) {
+  .progress {
+    margin-bottom: 1rem;
+  }
+
+  .contact-header {
+    font-size: 2rem;
+  }
+
+  button[type="submit"]{
+    width: 90%;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 991px) {
+
+  button[type="submit"]{
+    width: 95%;
+  }
+}
+
+@media (max-width: 766px) {
+  .portfolio-img {
+    display: block;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 584px) and (max-width: 990px) {
+  .navbar-brand {
+    margin-left: 0.5rem;
+  }
+}
+
+@media (max-width: 766px) {
+  .title-role {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  #home {
+    margin-top: 5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 769px) {
+  .title-role {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .btn-std-style {
+    font-weight: 500;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .about-height {
+    height: 339px;
+  }
+
+  .navbar-brand {
+    margin-left: 0rem !important;
+  }
+
+  .btn-std-style {
+    font-weight: 500;
+  }
+}
+
+@media (min-width: 770px) and (max-width: 1199px) {
+  .title-role {
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+
+  .name {
+    font-size: 4rem;
+  }
+
+  #flip {
+    font-size: 15px;
+  }
+  
+  .fa-github,
+  .fa-linkedin,
+  .fa-instagram,
+  .fa-facebook-square {
+    font-size: 15px;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .btn-std-style {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  button[type="submit"]{
+    width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .title-role {
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+  }
+
+  .intro-text {
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  #flip {
+    font-size: 15px;
+  }
+
+  .name {
+    font-size: 4.5rem;
+  }
+
+  .fa-github,
+  .fa-linkedin,
+  .fa-instagram,
+  .fa-facebook-square {
+    font-size: 18px;
+    margin-top: 12px;
+  }
+
+  .standard-button {
+    margin-top: 0.3rem;
+  }
+
+  .about-height {
+    height: 269px;
+  }
+
+  .btn-std-style {
+    letter-spacing: 0.1rem;
+  }
+}

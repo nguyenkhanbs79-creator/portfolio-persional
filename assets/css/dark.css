@@ -1,0 +1,139 @@
+.dark,
+.dark body {
+  background-color: #222;
+  color: #e6e6e6;
+  border-color: #e6e6e6;
+}
+
+.dark,
+.dark #home .container {
+  border: none;
+}
+
+.dark,
+.dark .container {
+  border: none;
+}
+
+/* Nav */
+.dark,
+.dark nav {
+  background-color: #666069;
+  color: white;
+}
+
+.dark,
+.dark .navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+
+.dark,
+.dark .animated-icon2 span {
+  background: -webkit-gradient(linear, right top, left top, from(#e4dfd9), to(#87caeb));
+  background: -o-linear-gradient(right, #e4dfd9, #87caeb);
+  background: linear-gradient(to left, #e4dfd9, #87caeb);
+}
+
+.dark,
+.dark .hvr-underline-from-center:before {
+  background: #fff;
+}
+
+.dark,
+.dark .hvr-underline-from-center:after {
+  background: #fff;
+}
+
+/* Home page */
+.dark,
+.dark #land {
+  background-color: #222;
+}
+
+.dark, 
+.dark .secondary-button {
+  color: #f1f1f1;
+}
+
+.dark,
+.dark .title-role,
+.dark .intro-text,
+.dark .contact-sub-text {
+  color: #a6a2a2;
+}
+/* Portfolio */
+
+.dark,
+.dark #portfolio {
+  background-color: #222;
+}
+
+.dark,
+.dark .portfolio-intro {
+  color: #ffffff;
+}
+
+.dark, 
+.dark .step {
+  color: #0e3974;
+}
+
+/* Contact Page */
+.dark,
+.dark #contact {
+  background-image: none !important;
+  background-color: #222;
+}
+
+.dark, 
+.dark .form-width {
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark,
+.dark form {
+  background-color: #d3ced3;
+  border-radius: 0.8rem;
+  color: #f1f1f1;
+}
+
+.dark,
+.dark .alert {
+  color: #ffffff;
+  background: transparent;
+}
+
+.dark,
+.dark .modal-body {
+  color: #222;
+}
+/* Footer */
+.dark,
+.dark,
+footer .container {
+  border: none;
+}
+
+.dark,
+.dark #footer {
+  background-color: #222;
+}
+/* Toggle */
+
+.switch {
+  margin: 0.1rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+.inner-switch {
+  display: inline-block;
+  cursor: pointer;
+  border: 3px solid #87caeb;
+  border-radius: 1.25rem;
+  width: 3.125rem;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.1875rem;
+  margin-left: 0.3125rem;
+}
