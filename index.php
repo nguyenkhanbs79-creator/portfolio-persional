@@ -1,43 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include __DIR__ . '/includes/header.php'; ?>
+<?php
+require_once __DIR__ . '/includes/db.php';
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+try {
+  $pdo = getPDO();
+  $stmt = $pdo->query('SELECT id, title, short_desc, skills, image, slug, content FROM projects ORDER BY created_at DESC');
+  $projects = $stmt->fetchAll();
+} catch (Throwable $e) {
+  $projects = [];
+}
 
-  <!-- SEO meta description-->
-
-  <meta name="description"
-    content="Are you looking to hire a junior developer? Take a look at my portfolio which showcases recent projects I have been working on and a downloadable CV. Built using BootStrap, check out my experience, qualifications & skills. I look forward to hearing from you" />
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
-
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css"
-    type="text/css" />
-
-  <!-- Fav icon -->
-  <link rel="icon" type="image/png" href="assets/images/logo-ITCHY-removebg-preview.png" sizes="32x32" />
-  <link rel="icon" type="image/png" href="assets/images/logo-ITCHY-removebg-preview.png" sizes="16x16" />
-  <link rel="shortcut icon" type="img/png" href="/assets/images/logo-ITCHY-removebg-preview.png" />
-
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-
-  <link rel="stylesheet" type="text/css" href="assets/css/dark.css" />
-
-  <!-- SEO Page Title-->
-
-  <title>CV | Hoàng Quốc Việt</title>
-</head>
-
-<body>
+$hasProjects = !empty($projects);
+?>
   <header id="land">
     <!-- Navbar Starts -->
 
@@ -687,239 +661,70 @@
   <section class="container mt-4 portfolio-card" id="projects">
     <h4 class="pt-4 text-center">DANH MỤC DỰ ÁN</h4>
     <hr class="block" />
-    <div class="row pt-4">
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/meomeoshop.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Web site dịch vụ game</h5>
-              <p class="card-text">
-                Web site dịch vụ game với tên miền đang hoạt động
-                <a href="https://meomeoshop.vn/" target="_blank" rel="noopener" style="color: black;">
-                  meomeoshop.vn
-                </a>
-              </p>
-
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
+    <?php if ($hasProjects): ?>
+      <?php foreach (array_chunk($projects, 2) as $index => $projectRow): ?>
+        <div class="row <?php echo $index === 0 ? 'pt-4' : 'mt-4'; ?>">
+          <?php foreach ($projectRow as $project): ?>
+            <div class="col-sm-6">
+              <div class="card-deck">
+                <div class="card">
+                  <?php $image = $project['image'] ?: 'https://placehold.co/600x400?text=Project+Image'; ?>
+                  <img src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>" alt="Hình minh họa" class="img-fluid rounded">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?></h5>
+                    <?php if (!empty($project['short_desc'])): ?>
+                      <p class="card-text"><?php echo nl2br(htmlspecialchars($project['short_desc'], ENT_QUOTES, 'UTF-8')); ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($project['skills'])): ?>
+                      <p class="card-text">
+                        <strong>Kỹ năng:</strong>
+                        <?php echo htmlspecialchars($project['skills'], ENT_QUOTES, 'UTF-8'); ?>
+                      </p>
+                    <?php endif; ?>
+                    <?php if (!empty($project['content'])): ?>
+                      <p class="card-text"><?php echo nl2br(htmlspecialchars($project['content'], ENT_QUOTES, 'UTF-8')); ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($project['slug'])): ?>
+                      <a href="<?php echo htmlspecialchars($project['slug'], ENT_QUOTES, 'UTF-8'); ?>" class="btn btn-warning text-dark rounded-pill px-4" target="_blank" rel="noopener">
+                        Xem dự án
+                      </a>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endforeach; ?>
+          <?php if (count($projectRow) === 1): ?>
+            <div class="col-sm-6"></div>
+          <?php endif; ?>
+        </div>
+      <?php endforeach; ?>
+    <?php else: ?>
+      <div class="row pt-4">
+        <div class="col-sm-6">
+          <div class="card-deck">
+            <div class="card">
+              <img src="https://placehold.co/600x400?text=Project+Image" alt="Hình minh họa" class="img-fluid rounded">
+              <div class="card-body">
+                <h5 class="card-title">Dự án mẫu</h5>
+                <p class="card-text">Thêm dự án trong trang quản trị để hiển thị tại đây.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card-deck">
+            <div class="card">
+              <img src="https://placehold.co/600x400?text=Project+Image" alt="Hình minh họa" class="img-fluid rounded">
+              <div class="card-body">
+                <h5 class="card-title">Dự án mẫu</h5>
+                <p class="card-text">Sử dụng trang quản trị để cập nhật thông tin dự án thực tế.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/webtrucban.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site ghi chú trực ban cho quân đội</h5>
-              <p class="card-text">
-                Đồ án web giúp ghi trép lịch trực ban và phân công nhiệm vụ cho doanh trại quân đội.
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hàng tiếp theo -->
-    <div class="row mt-4">
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/SV.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site quản lí hồ sơ đồ án cho sinh viên</h5>
-              <p class="card-text">
-                Đồ án web giúp thầy cô và sinh viên trường quản lí đồ án tốt nghiệp và đề tài nghiên cứu khoa học.
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/duhoc.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site khảo sát cho du học sinh
-              </h5>
-              <p class="card-text">
-                Đồ án web giúp khảo sát ý kiến của các du học sinh chuẩn bị đi du học.
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video 
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/gophim.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site luyện ngõ bàn phím 10
-              </h5>
-              <p class="card-text">
-                Đồ án web giúp người dùng máy tính và nhân viên văn phòng cải thiện tốc độ gõ phím.
-              </p>
-              <a href="ln10n.mp4" class="btn btn-warning text-dark rounded-pill px-4">
-                Xem Ngay
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/vanphongpham.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site bán văn phòng phẩm
-              </h5>
-              <p class="card-text">
-                Đồ án web kinh doanh thương mại online hàng văn phòng phẩm
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/tranhdongho.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site bán tranh đông hồ
-              </h5>
-              <p class="card-text">
-                Đồ án web kinh doanh thương mại online mặt hàng tranh đông hồ
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/quanruou.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site quản lí quán rượu
-              </h5>
-              <p class="card-text">
-                Đồ án web giúp nhà hàng kình doanh và quản lí quán rượu
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/dacsan.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site đặc sản Nha Trang
-              </h5>
-              <p class="card-text">
-                Đồ án web giúp kinh doanh các đặc sản tại Nha Trang
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/chillnhac.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site nghe nhạc có trả phí
-              </h5>
-              <p class="card-text">
-                Đồ án web web nghe nhạc phải đăng kí gói premium để không có quảng cáo
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/banbanh.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site bán bánh 
-              </h5>
-              <p class="card-text">
-                Đồ án web web bán bánh kem, bánh ngọt,....
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="card-deck">
-          <div class="card">
-            <img src="IMG/chillnhac.png" alt="Hình minh họa" class="img-fluid rounded">
-            <div class="card-body">
-              <h5 class="card-title">Đồ án web site nghe nhạc có trả phí
-              </h5>
-              <p class="card-text">
-                Đồ án web web nghe nhạc phải đăng kí gói premium để không có quảng cáo
-              </p>
-              <a href="#" class="btn btn-warning text-dark rounded-pill px-4">
-                Đang update video
-              </a>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <?php endif; ?>
   </section>
 
 
@@ -1324,11 +1129,13 @@
       <!--Form section-->
       <div class="col-lg-5 vertical-align">
         <div class="form-width rounded" id="contact-form">
-          <form action="https://formdump.codeinstitute.net/" method="POST">
+          <form action="/contact.php" method="POST">
 
             <fieldset>
               <legend>
                 Gửi tin nhắn cho tôi</legend>
+              <input type="hidden" name="csrf_token"
+                value="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8'); ?>">
               <div class="col mb-2">
                 <label for="fullname">Name:<span class="asteriks ml-1">*</span></label>
                 <div class="input-container">
@@ -1348,7 +1155,7 @@
 
               <div class="col mb-2">
                 <label for="messagerequest">Your Message:<span class="asteriks ml-1">*</span></label>
-                <textarea rows="5" name="messagerequest" id="messagerequest" class="form-control"
+                <textarea rows="5" name="message" id="messagerequest" class="form-control"
                   placeholder="Xin chào Việt, tôi có một yêu cầu về trang web..." required></textarea>
               </div>
               <div class="form-row text-center mb-2">
@@ -1438,88 +1245,4 @@
     </div>
   </footer>
 
-  <!-- Boostrap JS -->
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-    crossorigin="anonymous"></script>
-
-  <!---Nav JS-->
-  <script>
-    $(document).ready(function () {
-      $(".second-button").on("click", function () {
-        $(".animated-icon2").toggleClass("open");
-      });
-    });
-    //credit to https://codepen.io/imprfcto/pen/WNNpBLp for helping me close nav item when clicked on
-    // close hamburger menu after click a
-    $(".navbar-nav li a").on("click", function () {
-      $(".animated-icon2").click();
-    });
-  </script>
-
-  <!--Read More JS credit to https://codingartistweb.com/2020/04/read-more-read-less/-->
-  <script>
-    $(document).ready(function () {
-      $(".read").click(function () {
-        $(this).prev().toggle();
-        $(this).siblings(".dots").toggle();
-        if ($(this).text() == "Xem thêm...") {
-          $(this).text("Thu gọn...");
-        } else {
-          $(this).text("Xem thêm...");
-        }
-      });
-    });
-  </script>
-
-  <!-- Form JS credit to mentor Dick -->
-
-  <script>
-    $("#contact-form").submit(function (e) {
-      e.preventDefault();
-      $("#staticBackdrop").modal("show");
-      $("#contact-form")[0].reset();
-    });
-  </script>
-
-  <!-- Credit to this article in showing me how to implement the dark mode feature https://www.developerdrive.com/css-dark-mode/-->
-  <script>
-    $(".inner-switch").on("click", function () {
-      if ($("html").hasClass("dark")) {
-        $("html").removeClass("dark");
-        $(".inner-switch").text("Sáng");
-      } else {
-        $("html").addClass("dark");
-        $(".inner-switch").text("Tối");
-        // Get HTML head element
-        var head = document.getElementsByTagName("HEAD")[0];
-
-        //Credit to Stack Overflow to help solve the issue of linking my dark stylesheet for the above jascript function
-        // Create new link Element
-        var link = document.createElement("link");
-
-        // set the attributes for link element
-        link.rel = "stylesheet";
-
-        link.type = "text/css";
-
-        link.href = "dark.css";
-
-        // Append link element to HTML head
-        head.appendChild(link);
-      }
-    });
-  </script>
-
-  <script>
-    function index() {
-      window.location.href = "index.html";
-    }
-  </script>
-</body>
-
-</html>
+<?php include __DIR__ . '/includes/footer.php'; ?>

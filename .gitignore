@@ -1,0 +1,29 @@
+# Ignore binary assets
+.jpg
+.jpeg
+.png
+.gif
+.webp
+.ico
+.pdf
+.mp4
+.mov
+.zip
+.rar
+.7z
+.exe
+.dll
+.psd
+.ai
+.sketch
+
+# Local/IDE
+.vscode/
+.theia/
+.DS_Store
+Thumbs.db
+
+# Private
+.env
+uploads/**
+!uploads/.gitkeep
